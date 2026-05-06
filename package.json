@@ -103,5 +103,8 @@
 		"**.{ts,tsx,json}": [
 			"biome check --write --no-errors-on-unmatched"
 		]
+	},
+	"volta": {
+		"node": "20.20.2"
 	}
 }
