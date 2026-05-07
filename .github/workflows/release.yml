@@ -121,7 +121,6 @@ jobs:
         run: |
           gh release upload ${{ github.ref_name }} \
             target/${{ matrix.target }}/release/bundle/nsis/*.exe \
-            target/${{ matrix.target }}/release/bundle/msi/*.msi \
             --clobber
 
       # 上传 Linux 构建产物
