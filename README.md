@@ -1,3 +1,5 @@
+> **注意**：当前仓库是对原仓库 [EcoPasteHub/EcoPaste](https://github.com/EcoPasteHub/EcoPaste) 的短期跟进维护（由于原仓库作者长时间未更新），如若原仓库作者后续继续维护，当前仓库将停更！！！当前仓库不变更软件包名，且自动更新功能无法使用，想体验的可前往 [Release](https://github.com/witt-bit/EcoPastePro/releases/latest) 自行下载最新版安装。
+
 <a href="https://github.com/EcoPasteHub/EcoPaste">
   <img src="https://socialify.git.ci/EcoPasteHub/EcoPaste/image?description=1&descriptionEditable=%E9%80%82%E7%94%A8%E4%BA%8E%20Windows%E3%80%81MacOS%20%E5%92%8C%20Linux(x11)%20%E7%9A%84%E5%BC%80%E6%BA%90%E5%89%AA%E8%B4%B4%E6%9D%BF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E3%80%82&font=Source%20Code%20Pro&forks=1&issues=1&logo=https%3A%2F%2Fgithub.com%2FEcoPasteHub%2FEcoPaste%2Fblob%2Fmaster%2Fpublic%2Flogo.png%3Fraw%3Dtrue&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Auto" alt="EcoPaste" />
 </a>
@@ -10,7 +12,7 @@
   </div>
 
   <br/>
-    
+
   <div>
     <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
       <img
@@ -25,9 +27,9 @@
       />
     </a >
     <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
-      <img 
+      <img
         alt="Linux"
-        src="https://img.shields.io/badge/-Linux-yellow?style=flat-square&logo=linux&logoColor=white" 
+        src="https://img.shields.io/badge/-Linux-yellow?style=flat-square&logo=linux&logoColor=white"
       />
     </a>
   </div>
@@ -46,7 +48,7 @@
     <a href="https://github.com/EcoPasteHub/EcoPaste/releases">
       <img
         src="https://img.shields.io/github/downloads/EcoPasteHub/EcoPaste/total?style=flat-square"
-      />  
+      />
     </a >
   </div>
 
