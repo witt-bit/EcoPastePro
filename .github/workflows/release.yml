@@ -5,6 +5,16 @@ on:
     tags:
       - "v*"
   workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version tag (e.g., v0.6.0)"
+        required: true
+        type: string
+      prerelease:
+        description: "Mark as pre-release"
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   create-release:
@@ -16,23 +26,31 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set output
+      - name: Set tag
         id: vars
-        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Setup node
+        if: github.event_name != 'workflow_dispatch'
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
       - name: Generate changelog
-        id: create_release
+        if: github.event_name != 'workflow_dispatch'
+        continue-on-error: true
         run: npx changelogithub --draft --name ${{ steps.vars.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
   build-app:
     needs: create-release
+    if: always() && !failure() && !cancelled()
     permissions:
       contents: write
     strategy:
@@ -95,8 +113,8 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
-          tagName: ${{ github.ref_name }}
-          releaseName: EcoPaste ${{ github.ref_name }}
+          tagName: ${{ needs.create-release.outputs.tag }}
+          releaseName: EcoPaste ${{ needs.create-release.outputs.tag }}
           releaseDraft: true
-          prerelease: false
+          prerelease: ${{ github.event_name == 'workflow_dispatch' && inputs.prerelease || false }}
           args: --target ${{ matrix.target }}
